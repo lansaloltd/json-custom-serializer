@@ -3,12 +3,14 @@ package com.lansalo.app
 import scala.concurrent.duration._
 import akka.actor._
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
 import akka.util.Timeout
+import com.lansalo.routes.UserRoutes
 
 import scala.concurrent.Await
 
-object Main extends App {
+object Main extends App with UserRoutes {
 
   val host = "localhost"
   val port = 8080

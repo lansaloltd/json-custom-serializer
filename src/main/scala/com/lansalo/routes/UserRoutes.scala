@@ -10,7 +10,7 @@ import akka.http.scaladsl.server.directives.PathDirectives.path
 import akka.http.scaladsl.server.directives.RouteDirectives.complete
 import akka.pattern.ask
 import akka.util.Timeout
-import com.lansalo.model.{Male, User, Age}
+import com.lansalo.model.{Age, Male, User}
 import com.lansalo.service.BogusService
 
 import scala.concurrent.Future
@@ -27,12 +27,15 @@ import akka.http.scaladsl.server.directives.MethodDirectives.get
 import akka.http.scaladsl.server.directives.MethodDirectives.post
 import akka.http.scaladsl.server.directives.RouteDirectives.complete
 import akka.http.scaladsl.server.directives.PathDirectives.path
-import org.json4s.{ DefaultFormats, jackson }
+import org.json4s.{DefaultFormats, jackson}
 
 import scala.concurrent.Future
 import akka.pattern.ask
 import akka.util.Timeout
-trait UserRoutes {
+import com.lansalo.json.JsonSupport
+import de.heikoseeberger.akkahttpjson4s.Json4sSupport
+
+trait UserRoutes extends JsonSupport {
 
   implicit def system: ActorSystem
 
@@ -57,9 +60,10 @@ trait UserRoutes {
     } ~
       path(Segment) { name =>
         get {
-          complete(User("John", new Age(22), Male), "")
+          complete("kk")
         }
 
+      }
   }
-  //#all-routes
+
 }
