@@ -20,7 +20,6 @@ object Main extends App with UserRoutes {
 
 
   implicit val executionContext = system.dispatcher
-  implicit val timeout = Timeout(10 seconds)
 
   lazy val routes: Route = userRoutes
 

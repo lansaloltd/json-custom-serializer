@@ -15,3 +15,8 @@ final case object Female extends Gender {
 final case object Other extends Gender {
   val sex = "other"
 }
+
+object GenderHelper {
+  private val genders: Set[Gender] = Set(Male, Female, Other)
+  def toGender(sex: String): Option[Gender] = genders.find(_.sex == sex)
+}

@@ -41,12 +41,14 @@ trait UserRoutes extends JsonSupport {
 
   lazy val log = Logging(system, classOf[UserRoutes])
 
-  lazy val bogusService = new BogusService
+  //lazy val bogusService = new BogusService
 
-  def userRegistryActor: ActorRef
+  //def userRegistryActor: ActorRef
 
   implicit lazy val timeout = Timeout(5.seconds)
+  import Json4sSupport._
 
+  implicit val serialization = jackson.Serialization // or native.Serialization
 
 
 
@@ -54,13 +56,14 @@ trait UserRoutes extends JsonSupport {
     pathEnd {
       post {
         entity(as[User]) { user =>
+          println(s"Received user: $user")
           complete((StatusCodes.Created, "OK"))
         }
       }
     } ~
       path(Segment) { name =>
         get {
-          complete("kk")
+          complete(User("Lorenzo", new Age(22), Male))
         }
 
       }
