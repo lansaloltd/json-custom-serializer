@@ -1,4 +1,9 @@
 # json-custom-serializer
+
+Example code for my post on https://lansalo.com
+
+See here: https://lansalo.com/2018/05/07/custom-json-serializer/
+
 Example of a Json custon serializer
 
 Run Main class and then:
