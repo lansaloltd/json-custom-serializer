@@ -40,7 +40,6 @@ trait UserRoutes extends JsonSupport {
         get {
           complete(User(name, new Age(22), Female))
         }
-
       }
   }
 }
